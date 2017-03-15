@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Department>
+@{
+    ViewBag.Title = "Планировщик дел";
+}
+<h2>Список дел</h2>
+<p>
+    @Html.ActionLink("Создать новую запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Просмотреть", "Details", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.DepartmentID })
+            </td>
+        </tr>
+    }
+</table>
